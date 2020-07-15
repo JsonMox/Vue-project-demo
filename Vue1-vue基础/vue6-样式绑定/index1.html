@@ -1,0 +1,54 @@
+<!--class对象方式绑定-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue中的样式绑定1</title>
+    <script src="./vue.js"></script>
+    <style >
+        .activated{ color: red}
+
+        .col {
+            color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="app">
+        <div  @click="handleDivClick"
+              :class="{activated: isActivated}"
+        >
+            Hello world
+        </div>
+    </div>
+
+    <div id="pe" @click="change" v-bind:class = "kk">kyln</div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                isActivated: false
+            },
+            methods: {
+                handleDivClick: function () {
+                    this.isActivated = !this.isActivated;
+                }
+            }
+        })
+
+        var pe = new Vue({
+            el: '#pe',
+            data: {
+                kk :"col",
+            },
+            methods: {
+                change : function() {
+                    alert("下马问前程");
+                }
+            }
+        })
+    </script>
+</body>
+</html>
